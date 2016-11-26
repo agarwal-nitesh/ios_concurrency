@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ViewController2.swift
 //  ConcurrencyCheatSheet
 //
 //  Created by Nitesh on 11/26/16.
@@ -8,30 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController, Tasks {
+class ViewController2: UIViewController, TasksHighLevel {
     
     var tasks: [() -> Void]?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.playTasks()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
 
 }
 
-
-extension ViewController {
-    
+extension ViewController2 {
     func playTasks() {
         let taskVar1 = self.task1
         let taskVar2 = self.task2
@@ -40,9 +33,9 @@ extension ViewController {
         self.tasks?.append(taskVar1)
         self.tasks?.append(taskVar2)
         self.tasks?.append(taskVar3)
-//        self.executeSerially(self.tasks!)
+        //        self.executeSerially(self.tasks!)
         print("Execution is still in a separate thread!! Non blocking!")
-//        self.executeConcurrently(self.tasks!)
+        //        self.executeConcurrently(self.tasks!)
         
         self.executeConcurrentlyWithCompletionHandler(self.tasks!) {
             print("All tasks completed!!!")
@@ -67,5 +60,3 @@ extension ViewController {
         }
     }
 }
-
-
