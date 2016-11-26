@@ -40,7 +40,7 @@ extension TasksHighLevel
     
     func executeConcurrentlyWithCompletionHandler(tasks: [()->Void], completion: ()->Void) {
         let queue = NSOperationQueue()
-        queue.maxConcurrentOperationCount = 1
+        queue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount
         for task in tasks {
             queue.addOperationWithBlock(task)
         }
